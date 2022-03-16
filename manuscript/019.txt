@@ -27,3 +27,9 @@ Your age is
 В языках программирования Ruby и JavaScript мы столкнемся с тремя основными naming conventions:
 
 * Camel case (camel — верблюд), слово начинается с маленькой буквы, слова разделяются с помощью больших букв:
+
+	clientAge
+	userPassword
+	userPasswordExpirationDate. 
+
+Используется в JavaScript.
