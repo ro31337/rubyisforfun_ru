@@ -28,24 +28,6 @@ Your age is
 
 * Snake case (snake — змея), между словами ставится знак подчеркивания underscore (`_`). Переменные именуются следующим образом: 
 	
-	client_age
-	user_password
-	user_password_expiration_date
-	
-Используется в руби, а также в базах данных.
-
-* Camel case (camel — верблюд), слово начинается с маленькой буквы, слова разделяются с помощью больших букв: 
-
-	clientAge
-	userPassword
-	userPasswordExpirationDate. 
-
-Используется в JavaScript.
-
-* Kebab case (kebab — шашлык), слова разделяются дефисом: 
-
-	client-age
-	user-password
-	user-password-expiration-date
-
-Иногда используется в HTML, в т.н. data-атрибутах. Например:
+client_age
+user_password
+user_password_expiration_date
