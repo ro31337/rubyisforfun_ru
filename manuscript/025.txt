@@ -79,7 +79,7 @@ You are Roman
 Давайте докажем, что *gets* возвращает не просто строку. Выполним в REPL:
 
 {line-numbers: false}
-```
+```ruby
 $ irb
 > x = gets
 Hi
