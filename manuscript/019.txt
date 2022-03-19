@@ -36,15 +36,19 @@ Your age is
   Используется в руби, а также в базах данных.
 
 * Camel case (camel — верблюд), слово начинается с маленькой буквы, слова разделяются с помощью больших букв:
+  
   > `clientAge`
   > `userPassword`
   > `userPasswordExpirationDate` 
+  
   Используется в JavaScript.
 
 * Kebab case (kebab — шашлык), слова разделяются дефисом:
+  
   > `client-age`
   > `user-password`
   > `user-password-expiration-date`
+  
   Иногда используется в HTML, в т.н. data-атрибутах. Например:
 >
 >> `<input type="text" name="login" data-error-highlight-color="red">`
