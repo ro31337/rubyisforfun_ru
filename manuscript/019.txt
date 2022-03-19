@@ -29,9 +29,9 @@ Your age is
 
 * Snake case (snake — змея), между словами ставится знак подчеркивания underscore (`_`). Переменные именуются следующим образом:
 
-        client_age
-        user_password
-        user_password_expiration_date
+  	client_age
+  	user_password
+  	user_password_expiration_date
 
   Используется в руби, а также в базах данных.
 
