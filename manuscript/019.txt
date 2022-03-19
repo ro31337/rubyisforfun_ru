@@ -38,7 +38,6 @@ Your age is
         client_age
         user_password
         user_password_expiration_date
-
   Snake case is used in Ruby and often in databases for tables and column names.
 
 * Camel case (camel — верблюд), слово начинается с маленькой буквы, слова разделяются с помощью больших букв:
