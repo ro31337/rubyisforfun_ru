@@ -13,7 +13,7 @@ end
 print_x
 ```
 
-Текст ошибки «undefined local variable or method `x' for main:Object (NameError)». Но что же такое `main`? Оказывается, любая программа в руби «оборачивается» в класс `main`. Это легко доказать, достаточно запустить вот такую программу:
+Текст ошибки «undefined local variable or method `x` for main:Object (NameError)». Но что же такое `main`? Оказывается, любая программа в руби «оборачивается» в класс `main`. Это легко доказать, достаточно запустить вот такую программу:
 
 {line-numbers: false}
 ```ruby
