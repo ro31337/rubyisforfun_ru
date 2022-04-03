@@ -34,7 +34,7 @@ arr = Array.new
 
 Преимущество полной записи в том, что методу `new` (на самом деле это метод `initialize`, но мы поговорим об этом позже) можно передать параметр — размер массива:
 
-{caption: "Разница между nil и пустой строкой", line-numbers: false}
+{caption: "Передача параметра в Array.new", line-numbers: false}
 ```
 $ irb
 > arr = Array.new(10)
