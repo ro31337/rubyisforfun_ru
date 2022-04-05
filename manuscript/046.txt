@@ -152,7 +152,7 @@ $ irb
 var arr = new int[10, 10];
 ```
 
-Для типа `string`:
+Для типа *String*:
 
 {line-numbers: false}
 ```csharp
