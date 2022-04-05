@@ -88,7 +88,7 @@ puts arr.inspect # способ вывести информацию так же,
 arr = Array.new(10, 'something')
 element = arr[4]
 element.upcase!
-puts arr.inspect # способ вывести информацию на экран также, как ее выводит REPL
+puts arr.inspect # способ вывести информацию так же, как ее выводит REPL
 ```
 
 Ожидаемый результат:
