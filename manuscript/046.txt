@@ -269,7 +269,8 @@ arr = Array.new(2) { Array.new(3, 'something') }
 
 Создать массив в 3 строки и 2 столбца и заполнить каждую строку одинаковым объектом `something`:
 
-```
+{line-numbers: false}
+```ruby
 arr = Array.new(3) { Array.new(2, 'something') }
 ```
 
