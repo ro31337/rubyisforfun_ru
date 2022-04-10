@@ -41,7 +41,7 @@ end
 Другими словами, когда фреймворка rails нет, используем `empty?`, а когда работаем над rails-приложением, всегда используем `blank?` и `present?`. Эти методы реализованы для многих типов, и при наличии вопросов, в будущем рекомендуется обращаться к этой таблице:
 
 {width: 100%}
-![Rails blank? и present? методы для разных типов](images/images/051-rails-blank-present.png)
+![Rails blank? и present? методы для разных типов](images/051-rails-blank-present.png)
 
 [Источник](https://stackoverflow.com/a/20663389/337085)
 
