@@ -60,7 +60,7 @@ obj[:golf_ball] = 45
 {
     :soccer_ball => 410,
     :tennis_ball => 58,
-      :golf_ball => 45
+    :golf_ball => 45
 }
 ```
 
@@ -71,7 +71,7 @@ obj[:golf_ball] = 45
 obj = {
     :soccer_ball => 410,
     :tennis_ball => 58,
-      :golf_ball => 45
+    :golf_ball => 45
 }
 ```
 
