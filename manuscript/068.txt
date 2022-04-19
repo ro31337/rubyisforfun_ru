@@ -82,10 +82,10 @@ puts hh.inspect
 ```
 $ pry
 [1] pry(main)> nil + 1
-NoMethodError: undefined method `+' for nil:NilClass
+NoMethodError: undefined method `+` for nil:NilClass
 ```
 
-В этом случае говорят, что метод «+» не реализован в классе `nil`.
+В этом случае говорят, что метод `+` не реализован в классе `nil`.
 
 X> ## Задание: 
 X> Напишите программу, которая считает частотность букв и выводит на экран список букв и их количество в предложении.
