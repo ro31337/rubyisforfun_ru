@@ -1,0 +1,123 @@
+## Метод dig
+
+Допустим, у нас есть структура данных с несколькими уровнями вложенности:
+
+{line-numbers: false}
+```ruby
+users = [
+    { first: 'John', last: 'Smith', address: { city: 'San Francisco', country: 'US' } },
+    { first: 'Pat', last: 'Roberts', address: { country: 'US' } },
+    { first: 'Sam', last: 'Schwartzman' }
+]
+```
+
+Структура имеет определенную схему. Т.е. для каждой записи (пользователя) формат данных одинаковый. Но иногда данных по какому-то параметру нет. Скажем, во второй записи отсутствует город. В третьей записи вообще нет адреса. Мы хотим вывести на экран все города из этого массива.
+
+Первое, что приходит на ум — итерация по массиву и «обычное» обращение к хешу:
+
+{line-numbers: false}
+```ruby
+users.each do |user|
+  puts user[:address][:city]
+end
+```
+
+Попробуем запустить эту программу:
+
+{line-numbers: false}
+```
+San Francisco
+
+-:8:in `block in <main>': undefined method `[]' for nil:NilClass (NoMethodError).
+```
+
+Программа выдает ошибку. В чем же дело? Давайте попробуем обратиться к каждому пользователю отдельно:
+
+{line-numbers: false}
+```ruby
+$ pry
+> users[0][:address][:city]
+=> "San Francisco"
+> users[1][:address][:city]
+=> nil
+> users[2][:address][:city]
+NoMethodError: undefined method `[]' for nil:NilClass
+```
+
+Для первого пользователя конструкция сработала. Для второго пользователя тоже — результат равен `nil`. Для третьего пользователя `users[2][:address]` уже равно `nil`. А когда мы делаем `nil[:city]`, то мы получаем ошибку, потому что обращение к каким-либо элементам в классе `nil` не реализовано.
+
+Так как же нам написать программу? Воспользуемся конструкцией `if`:
+
+{line-numbers: false}
+```ruby
+users.each do |user|
+  if user[:address]
+    puts user[:address][:city]
+  end
+end
+```
+
+Ура! Программа работает и ошибку не выдает. Мы написали хороший код. Но давайте немного усложним структуру данных, добавив в хеш `address` еще один объект:
+
+{line-numbers: false}
+```ruby
+street: { line1: '...', line2: '...' }
+```
+
+Другими словами, будет street-адрес, который всегда состоит из двух строк. Структура данных полностью будет выглядеть следующим образом (по сравнению с вариантом выше эта структура также визуально оптимизирована):
+
+{line-numbers: false}
+```ruby
+users = [
+    {
+        first: 'John',
+        last: 'Smith',
+        address: {
+            city: 'San Francisco',
+            country: 'US',
+            street: {
+                line1: '555 Market Street',
+                line2: 'apt 123'
+            }
+        }
+    },
+    { first: 'Pat', last: 'Roberts', address: { country: 'US' } },
+    { first: 'Sam', last: 'Schwartzman' }
+]
+```
+
+Теперь наша задача — вывести `line1` из street-адреса. Как мы напишем эту программу? Первое, что приходит на ум:
+
+{line-numbers: false}
+```ruby
+users.each do |user|
+  if user[:address]
+    puts user[:address][:street][:line1]
+  end
+end
+```
+
+Но код выше споткнется уже не на третьей, а на второй записи. `user[:address][:street]` будет `nil`. Запишем этот код иначе:
+
+{line-numbers: false}
+```ruby
+users.each do |user|
+  if user[:address] && user[:address][:street]
+    puts user[:address][:street][:line1]
+  end
+end
+```
+
+Работает, но пришлось добавить второе условие. Другими словами, чем сложнее конструкция и больше уровней вложенности, тем больше проверок на `nil` необходимо сделать. Это не очень удобно, и в версии 2.3.0 языка руби (проверить свою версию можно с помощью `ruby -v`) был представлен новый метод `dig` (англ. «копать»):
+
+{line-numbers: false}
+```ruby
+users.each do |user|
+  puts user.dig(:address, :street, :line1)
+end
+```
+
+Этот метод принимает любое количество параметров и обращается к сложной структуре данных без ошибок. Если какой-то из ключей в цепочке не найден, то возвращается значение `nil`.
+
+I> ## Примечание: 
+Когда вы будете работать с Rails, вы столкнетесь с похожим методом `try` и т.н. `safe navigation operator` (тоже был представлен впервые в версии 2.3.0): `&.`, в других языках программирования обозначается как `?.` (иногда ошибочно говорят «Elvis operator» — это понятие относится к немного другой конструкции). `Safe navigation operator` похож по своей сути на метод `dig`. Мы рекомендуем взглянуть на [страницу в Википедии](https://en.wikipedia.org/wiki/Safe_navigation_operator) для того, чтобы иметь представление зачем это нужно.
