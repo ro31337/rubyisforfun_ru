@@ -1,0 +1,122 @@
+## Отладка с использованием вывода информации в консоль
+
+Это один из самых эффективных способов отладки программы, несмотря на кажущуюся простоту. В любом месте программы мы можем написать выражение:
+
+{line-numbers: false}
+```ruby
+puts something.inspect
+```
+
+`inspect` это метод, который реализован в объекте любого типа. Этот метод возвращает строковое представление объекта. Внимательный читатель спросит — а зачем использовать `puts something.inspect`, когда можно просто написать `puts something`?
+
+Например затем, что `puts nil` и `puts ""` выведут на экран пустую строку. Тогда как с `.inspect` на экран будет выведено `nil` и `""` соответственно:
+
+{line-numbers: false}
+```ruby
+$ pry
+> puts nil
+
+> puts nil.inspect
+nil
+> puts ""
+
+> puts "".inspect
+""
+```
+
+Для тех, кто работает с фреймворком Ruby on Rails, полезна будет следующая конструкция:
+
+{line-numbers: false}
+```ruby
+puts '=' * 80
+puts something.inspect
+puts '=' * 80
+```
+
+Код выше напишет 80 знаков «равно», потом переменную, а потом еще 80 знаков «равно». Вывод переменной в этом случае не затеряется среди «простыни» служебных сообщений. Вывод ниже показывает, что несмотря на обилие служебной информации, мы все-таки можем увидеть то значение переменной `something` (в нашем случае "123"):
+
+{line-numbers: false}
+```
+   (11.7ms)  SELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC
+Processing by HomeController#index as HTML
+  Rendering home/index.html.erb within layouts/home
+  Rendered application/_header.html.erb (Duration: 10.5ms | Allocations: 762)
+   (7.0ms)  SELECT promises_stats.* FROM promises_stats
+  ↳ app/models/promise.rb:17:in `amount_sum'
+==================================================
+"123"
+==================================================
+  Rendered application/_footer.html.erb (Duration: 1.3ms | Allocations: 166)
+  Rendered home/index.html.erb within layouts/home (Duration: 4747.1ms | Allocations: 2147650)
+Completed 200 OK in 4765ms (Views: 4745.9ms | ActiveRecord: 7.0ms | Allocations: 2149461)
+```
+
+Чтобы прервать выполнение программы на этом участке кода, можно воспользоваться ключевым словом `raise`, которое выбросит исключение (стандартную ошибку) и завершит работу (фреймворк Ruby on Rails завершит только текущий запрос [`request`]):
+
+{line-numbers: false}
+```ruby
+puts '=' * 80
+puts something.inspect
+puts '=' * 80
+raise
+```
+
+Т.к. руби — язык с динамической типизацией, по исходному коду не всегда можно сказать где именно определен тот или иной метод, пока программа не запустится и не дойдет до определенной точки. В `RubyMine` существует комбинация клавиш `Cmd + B` (на macOS) или `Ctrl + B` (на ОС Windows и Linux), которая покажет где именно находится тот или иной метод. Однако и `RubyMine` не всегда способен определить точное месторасположение вызываемой функции. В этом случае поможет следующая конструкция:
+
+{line-numbers: false}
+```ruby
+puts method(:something).source_location
+``` 
+
+Если в объекте определен метод `something`, то на экран будет выведен путь к файлу с номером строки. Если код выполняется в цикле, то иногда полезно комбинировать `if` и `puts`:
+
+{line-numbers: false}
+```ruby
+puts something.inspect if i == 100
+```
+
+В случае если требуется узнать стек вызова (`stack trace`, последовательность вызова функций), можно вывести массив `caller`. Это зарезервированное слово, которое доступно в любом месте:
+
+```ruby
+def random_pow
+  pow(rand(1..10))
+end
+
+def pow(x)
+  puts "=" * 80
+  puts caller
+  puts "=" * 80
+  x ** 2
+end
+
+puts random_pow
+```
+
+Результат работы программы:
+
+{line-numbers: false}
+```
+========================================================
+-:2:in `random_pow'
+-:12:in `<main>'
+========================================================
+64
+```
+
+Читать `stack trace` нужно в обратном порядке. Мы видим, что первый вызов функции `random_pow` произошел на 12 строке, а второй вызов на 2-ой. Таким образом, `caller` ничто иное как `call stack` (стек вызовов).
+
+В языке JavaScript тоже существует метод отладки в виде вывода в консоль. Вместо `puts` необходимо использовать `console.log`, который может принимать один или несколько параметров и также выводит информацию в консоль:
+
+{line-numbers: false}
+```js
+console.log(some_variable);
+```
+
+Существует похожий метод, который выводит более подробную информацию об объекте:
+
+{line-numbers: false}
+```js
+console.dir(some_variable);
+```
+
+О том, что такое JavaScript консоль мы поговорим в разделе про отладку с IDE.
