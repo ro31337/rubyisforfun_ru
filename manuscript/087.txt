@@ -176,7 +176,7 @@ eyphed
 
 Нажмите правой кнопкой (или двумя пальцами одновременно на macOS) на любой свободной области и выберите опцию `Inspect` из выпадающего меню:
 
-{width=50%}
+{width=20%}
 ![Контекстное меню в Google Chrome. При выборе «Inspect» вызывается Chrome Developer Tools](images/087-inspect.png)
 
 Внизу появится панель, которая называется `Chrome Developer Tools`:
