@@ -8,7 +8,7 @@
 
 # Ссылки
 
-- [Скачать PDF текущей](https://leanpub.com/rubyisforfun_ru)
+- [Скачать PDF](https://leanpub.com/rubyisforfun_ru)
 - [Наш чат в Телеграме](https://t.me/rubyschool)
 
 # Лицензия
