@@ -1,18 +1,15 @@
 [![CC BY 4.0][cc-by-shield]][cc-by]
 
-`* * * В Е Д У Т С Я * Р А Б О Т Ы * * *`
-
 # Руби для романтиков
 
  <img src="https://user-images.githubusercontent.com/1477672/160885299-ac915e54-9018-45a9-8388-87ad67ef839c.png" width="500">
 
-Книга написана и практически готова к распространению. В данный момент мы переводим книгу из Google Docs (см.ссылки ниже) в формат PDF.
+Статус: книга готова, добавляются улучшения (викторина, решения упражнений).
 
 # Ссылки
 
-- [Скачать PDF текущей версии (не полная книга - ВЕДУТСЯ РАБОТЫ)](https://leanpub.com/rubyisforfun_ru)
-- [Оригинал в Google Docs, который мы конвертируем в PDF](https://docs.google.com/document/d/1XrSEp1oXPePxI2mx2OD5l99zwkhhJbod2m9QK_0gOqs/edit
-)
+- [Скачать PDF текущей](https://leanpub.com/rubyisforfun_ru)
+- [Наш чат в Телеграме](https://t.me/rubyschool)
 
 # Лицензия
 
