@@ -179,7 +179,7 @@ from (pry):12:in `total_weight'
 
 Добавим в наше приложение одну директорию `lib` и два файла: `shipment.rb` и `app.rb`:
 
-{width=50%}
+{width=40%}
 ![Добавление дополнительных файлов в проект](images/091-files2.png)
 
 `app.rb` будет выглядеть следующим образом:
@@ -222,7 +222,7 @@ $ ruby app.rb
 
 Добавьте в директорию `spec` файл `shipment_spec.rb`:
 
-{width=50%}
+{width=40%}
 ![Добавление shipping_spec.rb](images/091-files3.png)
 
 Cо следующим содержимым:
