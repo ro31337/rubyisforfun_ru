@@ -8,7 +8,9 @@
 
 # Ссылки
 
-- [Скачать PDF](https://leanpub.com/rubyisforfun_ru)
+- <a href="/books/rubyisforfun_ru.epub" target="_blank">Книга в формате epub</a>
+- <a href="/books/rubyisforfun_ru.pdf" target="_blank">Книга в формате pdf</a>
+- [Скачать PDF с сайта leanpub.com](https://leanpub.com/rubyisforfun_ru)
 - [Наш чат в Телеграме](https://t.me/rubyschool)
 
 # Лицензия
