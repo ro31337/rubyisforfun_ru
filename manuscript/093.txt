@@ -452,14 +452,14 @@ end
 ## Решение
 
 ```ruby
-Array.new(5) { Array.new(4) { rand(1..5) } }
+Array.new(5) { Array.new(4, rand(1..5))}
 ```
 
 или
 
 ```ruby
 Array.new(5) do
-  Array.new(4) { rand(1..5) }
+  Array.new(4, rand(1..5)) 
 end
 ```
 
@@ -467,8 +467,9 @@ end
 
 ```ruby
 Array.new(5) do
-  Array.new(4) do
-    rand(1..5)
+  random = rand(1..5)
+  Array.new(4) do 
+    random
   end
 end
 ```
