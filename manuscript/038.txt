@@ -117,7 +117,7 @@ def random_sleep
 end
 
 def stats
-  puts "Осталось #{@humans} людей и #{@machines} машин"
+  puts "Осталось #{@humans.negative? ? 0 : @humans} людей и #{@maсhines.negative? ? 0 : @maсhines} машин"
 end
 
 ########################################
@@ -147,7 +147,13 @@ end
 ########################################
 
 def check_victory?
-  false
+  if @humans <= 0
+    puts "Победили машины в количестве #{@maсhines}"
+    true
+  elsif @maсhines <= 0
+    puts "Победили люди в количестве #{@humans}"
+    true
+  end
 end
 
 ########################################
